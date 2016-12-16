@@ -35,7 +35,7 @@ Partial Class frmCampeones
         'btnCampeonatosPelotari
         '
         Me.btnCampeonatosPelotari.Location = New System.Drawing.Point(43, 36)
-        Me.btnCampeonatosPelotari.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnCampeonatosPelotari.Margin = New System.Windows.Forms.Padding(4)
         Me.btnCampeonatosPelotari.Name = "btnCampeonatosPelotari"
         Me.btnCampeonatosPelotari.Size = New System.Drawing.Size(335, 28)
         Me.btnCampeonatosPelotari.TabIndex = 0
@@ -46,7 +46,7 @@ Partial Class frmCampeones
         '
         Me.dgvCampeonatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvCampeonatos.Location = New System.Drawing.Point(29, 124)
-        Me.dgvCampeonatos.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dgvCampeonatos.Margin = New System.Windows.Forms.Padding(4)
         Me.dgvCampeonatos.Name = "dgvCampeonatos"
         Me.dgvCampeonatos.Size = New System.Drawing.Size(1008, 276)
         Me.dgvCampeonatos.TabIndex = 1
@@ -54,7 +54,7 @@ Partial Class frmCampeones
         'txtPelotari
         '
         Me.txtPelotari.Location = New System.Drawing.Point(453, 36)
-        Me.txtPelotari.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtPelotari.Margin = New System.Windows.Forms.Padding(4)
         Me.txtPelotari.Name = "txtPelotari"
         Me.txtPelotari.Size = New System.Drawing.Size(397, 22)
         Me.txtPelotari.TabIndex = 2
@@ -62,7 +62,7 @@ Partial Class frmCampeones
         'btnAltaCampeonato
         '
         Me.btnAltaCampeonato.Location = New System.Drawing.Point(203, 427)
-        Me.btnAltaCampeonato.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnAltaCampeonato.Margin = New System.Windows.Forms.Padding(4)
         Me.btnAltaCampeonato.Name = "btnAltaCampeonato"
         Me.btnAltaCampeonato.Size = New System.Drawing.Size(199, 31)
         Me.btnAltaCampeonato.TabIndex = 4
@@ -72,7 +72,7 @@ Partial Class frmCampeones
         'btnFinalizar
         '
         Me.btnFinalizar.Location = New System.Drawing.Point(520, 427)
-        Me.btnFinalizar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnFinalizar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnFinalizar.Name = "btnFinalizar"
         Me.btnFinalizar.Size = New System.Drawing.Size(172, 31)
         Me.btnFinalizar.TabIndex = 14
@@ -82,7 +82,7 @@ Partial Class frmCampeones
         'btnCampeonatosProvincia
         '
         Me.btnCampeonatosProvincia.Location = New System.Drawing.Point(43, 71)
-        Me.btnCampeonatosProvincia.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnCampeonatosProvincia.Margin = New System.Windows.Forms.Padding(4)
         Me.btnCampeonatosProvincia.Name = "btnCampeonatosProvincia"
         Me.btnCampeonatosProvincia.Size = New System.Drawing.Size(403, 28)
         Me.btnCampeonatosProvincia.TabIndex = 15
@@ -92,7 +92,7 @@ Partial Class frmCampeones
         'txtNombreProvincia
         '
         Me.txtNombreProvincia.Location = New System.Drawing.Point(453, 75)
-        Me.txtNombreProvincia.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtNombreProvincia.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNombreProvincia.Name = "txtNombreProvincia"
         Me.txtNombreProvincia.Size = New System.Drawing.Size(397, 22)
         Me.txtNombreProvincia.TabIndex = 16
@@ -109,7 +109,7 @@ Partial Class frmCampeones
         Me.Controls.Add(Me.txtPelotari)
         Me.Controls.Add(Me.dgvCampeonatos)
         Me.Controls.Add(Me.btnCampeonatosPelotari)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmCampeones"
         Me.Text = "Pelotaris en campeonatos"
         CType(Me.dgvCampeonatos, System.ComponentModel.ISupportInitialize).EndInit()

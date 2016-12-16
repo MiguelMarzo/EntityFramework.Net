@@ -8,4 +8,8 @@ Public Class Negocio
         Return _datos.ObtenerPelotari(idPelotari)
     End Function
 
+    Public Function CampeonatosDePelotari(pelotari As Pelotari) As List(Of Campeonato)
+        Return _datos.CampeonatosDePelotari(pelotari)
+    End Function
+
 End Class

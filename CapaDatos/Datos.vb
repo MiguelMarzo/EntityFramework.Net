@@ -15,4 +15,11 @@ Public Class Datos
 
         Return pelotaria
     End Function
+    Public Function CampeonatosDePelotari(pelotari As Pelotari) As List(Of Campeonato)
+        Dim campeonatos = From cmp In contexto.Campeonatos
+                          Where cmp.IdCampeon.ToUpper = pelotari.Id.ToUpper Or cmp.IdSubCampeon.ToUpper = pelotari.Id.ToUpper
+                          Select cmp
+
+        Return campeonatos.ToList
+    End Function
 End Class
