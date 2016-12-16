@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CampeonatosPelotaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Campeonatos">
+          <Key>
+            <PropertyRef Name="Año" />
+          </Key>
+          <Property Name="Año" Type="int" Nullable="false" />
+          <Property Name="IdCampeon" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="IdSubCampeon" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="TantosSubCampeon" Type="int" Nullable="false" />
+          <Property Name="IdFronton" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Frontones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Localidad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdProvincia" Type="nvarchar" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pelotaris">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Localidad" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdProvincia" Type="nvarchar" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Provincias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Campeonatos_Frontones">
+          <End Role="Frontones" Type="Self.Frontones" Multiplicity="1" />
+          <End Role="Campeonatos" Type="Self.Campeonatos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Frontones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Campeonatos">
+              <PropertyRef Name="IdFronton" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Campeonatos_Pelotaris">
+          <End Role="Pelotaris" Type="Self.Pelotaris" Multiplicity="1" />
+          <End Role="Campeonatos" Type="Self.Campeonatos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pelotaris">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Campeonatos">
+              <PropertyRef Name="IdCampeon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Campeonatos_Pelotaris1">
+          <End Role="Pelotaris" Type="Self.Pelotaris" Multiplicity="1" />
+          <End Role="Campeonatos" Type="Self.Campeonatos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pelotaris">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Campeonatos">
+              <PropertyRef Name="IdSubCampeon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Frontones_Provincias">
+          <End Role="Provincias" Type="Self.Provincias" Multiplicity="1" />
+          <End Role="Frontones" Type="Self.Frontones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Frontones">
+              <PropertyRef Name="IdProvincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pelotaris_Provincias">
+          <End Role="Provincias" Type="Self.Provincias" Multiplicity="1" />
+          <End Role="Pelotaris" Type="Self.Pelotaris" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pelotaris">
+              <PropertyRef Name="IdProvincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CampeonatosPelotaModelStoreContainer">
+          <EntitySet Name="Campeonatos" EntityType="Self.Campeonatos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Frontones" EntityType="Self.Frontones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pelotaris" EntityType="Self.Pelotaris" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provincias" EntityType="Self.Provincias" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Campeonatos_Frontones" Association="Self.FK_Campeonatos_Frontones">
+            <End Role="Frontones" EntitySet="Frontones" />
+            <End Role="Campeonatos" EntitySet="Campeonatos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Campeonatos_Pelotaris" Association="Self.FK_Campeonatos_Pelotaris">
+            <End Role="Pelotaris" EntitySet="Pelotaris" />
+            <End Role="Campeonatos" EntitySet="Campeonatos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Campeonatos_Pelotaris1" Association="Self.FK_Campeonatos_Pelotaris1">
+            <End Role="Pelotaris" EntitySet="Pelotaris" />
+            <End Role="Campeonatos" EntitySet="Campeonatos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Frontones_Provincias" Association="Self.FK_Frontones_Provincias">
+            <End Role="Provincias" EntitySet="Provincias" />
+            <End Role="Frontones" EntitySet="Frontones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pelotaris_Provincias" Association="Self.FK_Pelotaris_Provincias">
+            <End Role="Provincias" EntitySet="Provincias" />
+            <End Role="Pelotaris" EntitySet="Pelotaris" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CampeonatosPelotaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Campeonato">
+          <Key>
+            <PropertyRef Name="Año" />
+          </Key>
+          <Property Name="Año" Type="Int32" Nullable="false" />
+          <Property Name="IdCampeon" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdSubCampeon" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TantosSubCampeon" Type="Int32" Nullable="false" />
+          <Property Name="IdFronton" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Fronton" Relationship="Self.FK_Campeonatos_Frontones" FromRole="Campeonatos" ToRole="Frontones" />
+          <NavigationProperty Name="Campeon" Relationship="Self.FK_Campeonatos_Pelotaris" FromRole="Campeonatos" ToRole="Pelotaris" />
+          <NavigationProperty Name="SubCampeon" Relationship="Self.FK_Campeonatos_Pelotaris1" FromRole="Campeonatos" ToRole="Pelotaris" />
+        </EntityType>
+        <EntityType Name="Fronton">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Localidad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdProvincia" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Campeonatos" Relationship="Self.FK_Campeonatos_Frontones" FromRole="Frontones" ToRole="Campeonatos" />
+          <NavigationProperty Name="Provincia" Relationship="Self.FK_Frontones_Provincias" FromRole="Frontones" ToRole="Provincias" />
+        </EntityType>
+        <EntityType Name="Pelotari">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Localidad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdProvincia" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CampeonatosCampeon" Relationship="Self.FK_Campeonatos_Pelotaris" FromRole="Pelotaris" ToRole="Campeonatos" />
+          <NavigationProperty Name="CampeonatosSubCampeon" Relationship="Self.FK_Campeonatos_Pelotaris1" FromRole="Pelotaris" ToRole="Campeonatos" />
+          <NavigationProperty Name="Provincia" Relationship="Self.FK_Pelotaris_Provincias" FromRole="Pelotaris" ToRole="Provincias" />
+        </EntityType>
+        <EntityType Name="Provincia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Frontones" Relationship="Self.FK_Frontones_Provincias" FromRole="Provincias" ToRole="Frontones" />
+          <NavigationProperty Name="Pelotaris" Relationship="Self.FK_Pelotaris_Provincias" FromRole="Provincias" ToRole="Pelotaris" />
+        </EntityType>
+        <Association Name="FK_Campeonatos_Frontones">
+          <End Role="Frontones" Type="CampeonatosPelotaModel.Fronton" Multiplicity="1" />
+          <End Role="Campeonatos" Type="Self.Campeonato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Frontones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Campeonatos">
+              <PropertyRef Name="IdFronton" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Campeonatos_Pelotaris">
+          <End Role="Pelotaris" Type="Self.Pelotari" Multiplicity="1" />
+          <End Role="Campeonatos" Type="Self.Campeonato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pelotaris">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Campeonatos">
+              <PropertyRef Name="IdCampeon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Campeonatos_Pelotaris1">
+          <End Role="Pelotaris" Type="Self.Pelotari" Multiplicity="1" />
+          <End Role="Campeonatos" Type="Self.Campeonato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pelotaris">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Campeonatos">
+              <PropertyRef Name="IdSubCampeon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Frontones_Provincias">
+          <End Role="Provincias" Type="Self.Provincia" Multiplicity="1" />
+          <End Role="Frontones" Type="CampeonatosPelotaModel.Fronton" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Frontones">
+              <PropertyRef Name="IdProvincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pelotaris_Provincias">
+          <End Role="Provincias" Type="Self.Provincia" Multiplicity="1" />
+          <End Role="Pelotaris" Type="Self.Pelotari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pelotaris">
+              <PropertyRef Name="IdProvincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CampeonatosPelotaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Campeonatos" EntityType="Self.Campeonato" />
+          <EntitySet Name="Frontons" EntityType="CampeonatosPelotaModel.Fronton" />
+          <EntitySet Name="Pelotaris" EntityType="Self.Pelotari" />
+          <EntitySet Name="Provincias" EntityType="Self.Provincia" />
+          <AssociationSet Name="FK_Campeonatos_Frontones" Association="Self.FK_Campeonatos_Frontones">
+            <End Role="Frontones" EntitySet="Frontons" />
+            <End Role="Campeonatos" EntitySet="Campeonatos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Campeonatos_Pelotaris" Association="Self.FK_Campeonatos_Pelotaris">
+            <End Role="Pelotaris" EntitySet="Pelotaris" />
+            <End Role="Campeonatos" EntitySet="Campeonatos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Campeonatos_Pelotaris1" Association="Self.FK_Campeonatos_Pelotaris1">
+            <End Role="Pelotaris" EntitySet="Pelotaris" />
+            <End Role="Campeonatos" EntitySet="Campeonatos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Frontones_Provincias" Association="Self.FK_Frontones_Provincias">
+            <End Role="Provincias" EntitySet="Provincias" />
+            <End Role="Frontones" EntitySet="Frontons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pelotaris_Provincias" Association="Self.FK_Pelotaris_Provincias">
+            <End Role="Provincias" EntitySet="Provincias" />
+            <End Role="Pelotaris" EntitySet="Pelotaris" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CampeonatosPelotaModelStoreContainer" CdmEntityContainer="CampeonatosPelotaEntities">
+          <EntitySetMapping Name="Campeonatos">
+            <EntityTypeMapping TypeName="CampeonatosPelotaModel.Campeonato">
+              <MappingFragment StoreEntitySet="Campeonatos">
+                <ScalarProperty Name="Año" ColumnName="Año" />
+                <ScalarProperty Name="IdCampeon" ColumnName="IdCampeon" />
+                <ScalarProperty Name="IdSubCampeon" ColumnName="IdSubCampeon" />
+                <ScalarProperty Name="TantosSubCampeon" ColumnName="TantosSubCampeon" />
+                <ScalarProperty Name="IdFronton" ColumnName="IdFronton" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Frontons">
+            <EntityTypeMapping TypeName="CampeonatosPelotaModel.Fronton">
+              <MappingFragment StoreEntitySet="Frontones">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Localidad" ColumnName="Localidad" />
+                <ScalarProperty Name="IdProvincia" ColumnName="IdProvincia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pelotaris">
+            <EntityTypeMapping TypeName="CampeonatosPelotaModel.Pelotari">
+              <MappingFragment StoreEntitySet="Pelotaris">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Localidad" ColumnName="Localidad" />
+                <ScalarProperty Name="IdProvincia" ColumnName="IdProvincia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provincias">
+            <EntityTypeMapping TypeName="CampeonatosPelotaModel.Provincia">
+              <MappingFragment StoreEntitySet="Provincias">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

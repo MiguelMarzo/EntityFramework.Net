@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e4bc5df921fc4500bfb33020398ca8a9" Name="Diagram1">
+        <EntityTypeShape EntityType="CampeonatosPelotaModel.Campeonato" Width="1.5" PointX="5.25" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CampeonatosPelotaModel.Fronton" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CampeonatosPelotaModel.Pelotari" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CampeonatosPelotaModel.Provincia" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <AssociationConnector Association="CampeonatosPelotaModel.FK_Campeonatos_Frontones" ManuallyRouted="false" />
+        <AssociationConnector Association="CampeonatosPelotaModel.FK_Campeonatos_Pelotaris" ManuallyRouted="false" />
+        <AssociationConnector Association="CampeonatosPelotaModel.FK_Campeonatos_Pelotaris1" ManuallyRouted="false" />
+        <AssociationConnector Association="CampeonatosPelotaModel.FK_Frontones_Provincias" ManuallyRouted="false" />
+        <AssociationConnector Association="CampeonatosPelotaModel.FK_Pelotaris_Provincias" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
