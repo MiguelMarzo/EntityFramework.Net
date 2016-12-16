@@ -81,6 +81,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuxModule.vb" />
     <Compile Include="frmAltaCampeonato.designer.vb">
       <DependentUpon>frmAltaCampeonato.vb</DependentUpon>
     </Compile>

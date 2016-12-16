@@ -19,4 +19,16 @@ Public Class Negocio
     Public Function CampeonatosConGanadoresDeProvincia(provincia As Provincia) As List(Of Campeonato)
         Return _datos.CampeonatosConGanadoresDeProvincia(provincia)
     End Function
+
+    Public Function CampeonatoDeUnAño(año As Integer) As Campeonato
+        Return _datos.CampeonatoDeUnAño(año)
+    End Function
+
+    Public Function ObtenerFronton(id As String) As Fronton
+        Return _datos.ObtenerFronton(id)
+    End Function
+
+    Public Sub InsertarNuevoCampeonato(año As Integer, camp As Pelotari, subCamp As Pelotari, puntosSubCampeon As Integer, fronton As Fronton)
+        _datos.InsertarNuevoCampeonato(año, camp, subCamp, puntosSubCampeon, fronton)
+    End Sub
 End Class

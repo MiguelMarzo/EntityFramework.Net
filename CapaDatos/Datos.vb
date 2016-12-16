@@ -35,4 +35,21 @@ Public Class Datos
 
         Return campeonatos.ToList
     End Function
+
+    Public Function CampeonatoDeUnAño(año As Integer) As Campeonato
+        Dim campeonato As Campeonato = contexto.Campeonatos.SingleOrDefault(Function(cmp) cmp.Año = año)
+        Return campeonato
+    End Function
+
+    Public Function ObtenerFronton(id As String) As Fronton
+        Dim fronton As Fronton = contexto.Frontons.SingleOrDefault(Function(frt) frt.Id.ToUpper = id.ToUpper)
+        Return fronton
+    End Function
+
+    Public Sub InsertarNuevoCampeonato(año As Integer, camp As Pelotari, subCamp As Pelotari, puntosSubCampeon As Integer, fronton As Fronton)
+        Dim nuevoCampeonato As New Campeonato With {.Año = año, .IdCampeon = camp.Id, .IdSubCampeon = subCamp.Id,
+            .TantosSubCampeon = puntosSubCampeon, .IdFronton = fronton.Id}
+        contexto.Campeonatos.Add(nuevoCampeonato)
+        contexto.SaveChanges()
+    End Sub
 End Class

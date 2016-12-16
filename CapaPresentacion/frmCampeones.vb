@@ -2,7 +2,6 @@
 Imports Entidades
 
 Public Class frmCampeones
-    Private _negocio As New Negocio
     Private Sub btnCampeonatosPelotari_Click(sender As Object, e As EventArgs) Handles btnCampeonatosPelotari.Click
         Dim pelotari As Pelotari = _negocio.ObtenerPelotari(txtPelotari.Text)
 
@@ -42,5 +41,9 @@ Public Class frmCampeones
 
     Private Sub btnAltaCampeonato_Click(sender As Object, e As EventArgs) Handles btnAltaCampeonato.Click
         frmAltaCampeonato.Show()
+    End Sub
+
+    Private Sub btnFinalizar_Click(sender As Object, e As EventArgs) Handles btnFinalizar.Click
+        Me.Close()
     End Sub
 End Class
