@@ -12,4 +12,11 @@ Public Class Negocio
         Return _datos.CampeonatosDePelotari(pelotari)
     End Function
 
+    Public Function ObtenerProvincia(provincia As String) As Provincia
+        Return _datos.ObtenerProvincia(provincia)
+    End Function
+
+    Public Function CampeonatosConGanadoresDeProvincia(provincia As Provincia) As List(Of Campeonato)
+        Return _datos.CampeonatosConGanadoresDeProvincia(provincia)
+    End Function
 End Class

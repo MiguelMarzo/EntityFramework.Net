@@ -22,4 +22,17 @@ Public Class Datos
 
         Return campeonatos.ToList
     End Function
+
+    Public Function ObtenerProvincia(nombreProvincia As String) As Provincia
+        Dim provincia As Provincia = contexto.Provincias.SingleOrDefault(Function(prov) prov.Nombre.ToUpper = nombreProvincia.ToUpper)
+        Return provincia
+    End Function
+
+    Public Function CampeonatosConGanadoresDeProvincia(provincia As Provincia) As List(Of Campeonato)
+        Dim campeonatos = From cmp In contexto.Campeonatos
+                          Where cmp.Campeon.IdProvincia = provincia.Id
+                          Select cmp
+
+        Return campeonatos.ToList
+    End Function
 End Class
